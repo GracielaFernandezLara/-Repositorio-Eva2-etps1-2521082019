@@ -2,8 +2,12 @@ package com.example.parcial2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import com.example.parcial2.AdaptadorEmpleado.*;
 
 public class MainActivity extends AppCompatActivity {
     String []Empleado={"Graciela Fernandez\n Estudiante UTEC",
@@ -38,8 +42,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AdaptadorEmpleado adaptador=new AdaptadorEmpleado(this,Empleado,ImgEmpleado);
+        AdaptadorEmpleado adaptador = new AdaptadorEmpleado(this,Empleado,ImgEmpleado);
         lsvEmpleados=findViewById(R.id.lsvEmpleados);
         lsvEmpleados.setAdapter(adaptador);
+
+        /*lsvEmpleados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int  posicion, long l) {
+                Empleado = (Adaptador) parent.getItemAtPosition(posicion);
+                Intent intent = new Intent(MainActivity.this, AdaptadorEmpleado.class);
+                intent.putExtra("Empleado:", Empleado);
+            }
+
+        });*/
+
+
     }
 }
